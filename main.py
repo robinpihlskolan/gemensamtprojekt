@@ -7,25 +7,11 @@ pygame.init()
 WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
-
+# Colors
 WHITE = (255, 255, 255)
 COLORS = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 165, 0), (128, 0, 128)]
 
-<<<<<<< HEAD
 # Ball class
-=======
-radius1=12
-radius2=20
-radius3=35
-radius4=45
-radius5=51
-radius6=55
-radius7=60
-radius8=65
-radius9=72
-radius10=88
-
->>>>>>> refs/remotes/origin/main
 class Ball:
     def __init__(self, radius, color):
         self.radius = radius
@@ -34,7 +20,6 @@ class Ball:
         self.y = random.randint(radius, HEIGHT - radius)
         self.speed_x = random.choice([-3, -2, 2, 3])
         self.speed_y = random.choice([-3, -2, 2, 3])
-<<<<<<< HEAD
 
     def move(self):
         self.x += self.speed_x
@@ -44,19 +29,6 @@ class Ball:
         if self.y <= self.radius or self.y >= HEIGHT - self.radius:
             self.speed_y *= -1
 
-=======
-   
-   def hastighet(self):
-        self.x+=self.speed_x
-        self.y+=self.speed_y
-        if self.x<=self.radius or self.x>=WIDTH-self.radius
-            self.speed_x*-1
-        if self.y<=self.radius or self.y>=HEIGHT-self.radius
-             self.speed*-1
-
-
-   
->>>>>>> refs/remotes/origin/main
     def draw(self, surface):
         pygame.draw.circle(surface, self.color, (self.x, self.y), self.radius)
 
@@ -65,7 +37,7 @@ class Ball:
         dist = ((mx - self.x)**2 + (my - self.y)**2)**0.5
         return dist <= self.radius
 
-    def speed_up(self, factor=1.5):
+    def speed_up(self, factor=1.2):
         self.speed_x *= factor
         self.speed_y *= factor
 
@@ -77,7 +49,6 @@ font = pygame.font.SysFont(None, 40)
 
 clock = pygame.time.Clock()
 
-# Game loop
 running = True
 while running:
     screen.fill(WHITE)
@@ -94,10 +65,11 @@ while running:
             running = False
 
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            for ball in balls[:]: 
+            for ball in balls[:]:  # iterate over a copy
                 if ball.is_clicked(pygame.mouse.get_pos()):
                     balls.remove(ball)
                     score += 1
+                    # Speed up remaining balls
                     for other in balls:
                         other.speed_up()
                     break
