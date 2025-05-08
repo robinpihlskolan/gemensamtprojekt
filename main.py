@@ -2,10 +2,13 @@ import pygame
 import random
 import sys
 
+# Initialize Pygame
 pygame.init()
 
+# Screen setup
 WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Click to Remove Balls")
 
 # Colors
 WHITE = (255, 255, 255)
@@ -41,25 +44,32 @@ class Ball:
         self.speed_x *= factor
         self.speed_y *= factor
 
+# Create balls
 ball_sizes = [30, 40, 25, 35, 20]
 balls = [Ball(radius, COLORS[i]) for i, radius in enumerate(ball_sizes)]
 
+# Score
 score = 0
 font = pygame.font.SysFont(None, 40)
 
+# Clock
 clock = pygame.time.Clock()
 
+# Game loop
 running = True
 while running:
     screen.fill(WHITE)
 
+    # Move and draw remaining balls
     for ball in balls:
         ball.move()
         ball.draw(screen)
 
+    # Draw score
     score_text = font.render(f"Score: {score}", True, (0, 0, 0))
     screen.blit(score_text, (10, 10))
 
+    # Event handling
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -74,6 +84,7 @@ while running:
                         other.speed_up()
                     break
 
+    # End game if all balls are gone
     if not balls:
         end_text = font.render("All balls removed! Final Score: " + str(score), True, (0, 100, 0))
         screen.blit(end_text, (WIDTH // 2 - 200, HEIGHT // 2))
