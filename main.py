@@ -37,7 +37,7 @@ class Ball:
         dist = ((mx - self.x)**2 + (my - self.y)**2)**0.5
         return dist <= self.radius
 
-    def speed_up(self, factor=2):
+    def speed_up(self, factor=1.5):
         self.speed_x *= factor
         self.speed_y *= factor
 
