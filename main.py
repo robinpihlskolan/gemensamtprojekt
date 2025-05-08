@@ -18,7 +18,14 @@ class Ball:
         self.y = random.randint(radius, HEIGHT - radius)
         self.speed_x = random.choice([-3, -2, 2, 3])
         self.speed_y = random.choice([-3, -2, 2, 3])
-
+   
+   
+   
+   
+   
+   
+    def draw(self, surface):
+        pygame.draw.circle(surface, self.color, (self.x, self.y), self.radius)
 
 
 score = 0
