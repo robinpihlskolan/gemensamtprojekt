@@ -19,10 +19,15 @@ class Ball:
         self.speed_x = random.choice([-3, -2, 2, 3])
         self.speed_y = random.choice([-3, -2, 2, 3])
    
-   
-   
-   
-   
+   def hastighet(self):
+        self.x+=self.speed_x
+        self.y+=self.speed_y
+        if self.x<=self.radius or self.x>=WIDTH-self.radius
+            self.speed_x*-1
+        if self.y<=self.radius or self.y>=HEIGHT-self.radius
+             self.speed*-1
+
+
    
     def draw(self, surface):
         pygame.draw.circle(surface, self.color, (self.x, self.y), self.radius)
