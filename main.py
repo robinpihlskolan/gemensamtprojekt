@@ -10,6 +10,17 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 WHITE = (255, 255, 255)
 COLORS = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 165, 0), (128, 0, 128)]
 
+radius1=12
+radius2=20
+radius3=35
+radius4=45
+radius5=51
+radius6=55
+radius7=60
+radius8=65
+radius9=72
+radius10=88
+
 class Ball:
     def __init__(self, radius, color):
         self.radius = radius
